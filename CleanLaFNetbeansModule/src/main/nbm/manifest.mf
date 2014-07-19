@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Install: pl/pkosmowski/cleanlafnetbeansmodule/Installer.class
+OpenIDE-Module-Localizing-Bundle: pl/pkosmowski/cleanlafnetbeansmodule/Bundle.properties
+
