@@ -43,18 +43,18 @@ public final class LafTheme extends DefaultMetalTheme {
     public static final int DEFAULT_FRAME_OPACITY = 180;
 
     // primarios
-    private ColorUIResource primary1 = new ColorUIResource(229, 189, 0);
+    private ColorUIResource primary1 = new ColorUIResource(255, 255, 255);
 
-    private ColorUIResource primary2 = new ColorUIResource(239, 199, 0);
+    private ColorUIResource primary2 = new ColorUIResource(235, 235, 235);
 
-    private ColorUIResource primary3 = new ColorUIResource(249, 209, 0);
+    private ColorUIResource primary3 = new ColorUIResource(245, 245, 245);
 
     // secondarios
-    private ColorUIResource secondary1 = new ColorUIResource(217, 215, 173);
+    private ColorUIResource secondary1 = new ColorUIResource(212, 212, 212);
 
-    private ColorUIResource secondary2 = new ColorUIResource(227, 225, 183);
+    private ColorUIResource secondary2 = new ColorUIResource(222, 222, 222);
 
-    private ColorUIResource secondary3 = new ColorUIResource(237, 235, 193);
+    private ColorUIResource secondary3 = new ColorUIResource(232, 232, 232);
 
     private ColorUIResource black = new ColorUIResource(0, 0, 0);
 
