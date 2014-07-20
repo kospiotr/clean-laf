@@ -25,28 +25,21 @@ package net.neilcsmith.praxis.laf;
 
 import java.io.IOException;
 import javax.swing.UIDefaults;
-import net.sf.nimrod.NimRODLookAndFeel;
+import net.sf.Laf.LafLookAndFeel;
 
 /**
  *
  * @author Neil C Smith
  */
-public class PraxisLookAndFeel extends NimRODLookAndFeel {
+public class PraxisLookAndFeel extends LafLookAndFeel {
 
-    public PraxisLookAndFeel() throws IOException {
-        setCurrentTheme(new PraxisTheme());
-    }
+//    public PraxisLookAndFeel() throws IOException {
+//        setCurrentTheme(new PraxisTheme());
+//    }
 
     @Override
     public String getID() {
         return "Praxis";
-    }
-
-    @Override
-    protected void initComponentDefaults(UIDefaults table) {
-        super.initComponentDefaults(table);
-        table.put("ButtonUI", "net.neilcsmith.praxis.laf.PraxisButtonUI");
-        table.put("ToggleButtonUI", "net.neilcsmith.praxis.laf.PraxisToggleButtonUI");
     }
 
 }

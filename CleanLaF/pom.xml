@@ -10,8 +10,8 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>net.sf.nimrod</groupId>
-            <artifactId>nimrod-laf</artifactId>
+            <groupId>net.sf.Laf</groupId>
+            <artifactId>Laf-laf</artifactId>
             <version>1.2</version>
             <type>jar</type>
         </dependency>
