@@ -5,12 +5,12 @@
  */
 package pl.pkosmowski.cleanlafnetbeansmodule;
 
-import pl.pkosmowski.laf.clear.LafLookAndFeel;
 import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.openide.modules.ModuleInstall;
 import org.openide.util.Exceptions;
+import pl.pkosmowski.laf.clear.LafLookAndFeel;
 
 public class Installer extends ModuleInstall {
 

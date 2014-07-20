@@ -1,20 +1,22 @@
 package pl.pkosmowski.laf.clear;
 
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.metal.*;
+import javax.swing.JComponent;
+import javax.swing.border.Border;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.metal.MetalToolBarUI;
 
 public class LafToolBarUI extends MetalToolBarUI {
-  public LafToolBarUI() {
-    super();
-  }
-  
-	public static ComponentUI createUI( JComponent c) {
-    return new LafToolBarUI();
-  }
-  
-	protected Border createRolloverBorder() {
-	  return LafBorders.getGenBorder();//.getRolloverButtonBorder();
-  }
+
+    public static ComponentUI createUI(JComponent c) {
+        return new LafToolBarUI();
+    }
+
+    public LafToolBarUI() {
+        super();
+    }
+
+    @Override
+    protected Border createRolloverBorder() {
+        return LafBorders.getGenBorder();//.getRolloverButtonBorder();
+    }
 }

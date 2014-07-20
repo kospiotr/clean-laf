@@ -1,12 +1,30 @@
 package pl.pkosmowski.laf.clear;
 
-import java.awt.*;
-import java.awt.geom.*;
-import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
-import javax.swing.plaf.metal.*;
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.RenderingHints;
+import java.awt.geom.RoundRectangle2D;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JInternalFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.border.AbstractBorder;
+import javax.swing.border.Border;
+import javax.swing.plaf.BorderUIResource;
+import javax.swing.plaf.UIResource;
+import javax.swing.plaf.basic.BasicBorders;
+import javax.swing.plaf.metal.MetalBorders;
 
 public class LafBorders extends MetalBorders {
 
@@ -146,6 +164,7 @@ public class LafBorders extends MetalBorders {
 
         protected static Insets borderInsets = new Insets(1, 1, 1, 1);
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
             Color col = LafUtils.getColorTercio(LafLookAndFeel.getControlTextColor(),
                     LafLookAndFeel.getFocusColor());
@@ -153,10 +172,12 @@ public class LafBorders extends MetalBorders {
             g.drawRect(x, y, w - 1, h - 1);
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return borderInsets;
         }
 
+        @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             Insets tmpIns = getBorderInsets(c);
 
@@ -175,6 +196,7 @@ public class LafBorders extends MetalBorders {
 
         protected static Insets borderInsets = new Insets(0, 0, 0, 0);
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
             if (!((AbstractButton) c).isBorderPainted()) {
                 return;
@@ -190,7 +212,7 @@ public class LafBorders extends MetalBorders {
 
             if (c instanceof JButton) {
                 JButton button = (JButton) c;
-        //ButtonModel model = button.getModel();
+                //ButtonModel model = button.getModel();
 
                 if (button.isDefaultButton()) {
                     g2D.setColor(LafLookAndFeel.getControlDarkShadow().darker());
@@ -206,10 +228,12 @@ public class LafBorders extends MetalBorders {
             g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_DEFAULT);
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return borderInsets;
         }
 
+        @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             Insets tmpIns = getBorderInsets(c);
 
@@ -228,6 +252,7 @@ public class LafBorders extends MetalBorders {
 
         protected static Insets borderInsets = new Insets(1, 1, 5, 5);
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
             g.translate(x, y);
 
@@ -252,10 +277,12 @@ public class LafBorders extends MetalBorders {
             g.translate(-x, -y);
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return borderInsets;
         }
 
+        @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             Insets tmpIns = getBorderInsets(c);
 
@@ -279,6 +306,7 @@ public class LafBorders extends MetalBorders {
 
         protected static Insets borderInsets = new Insets(3, 3, 3, 3);
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
             if (!((AbstractButton) c).isBorderPainted()) {
                 return;
@@ -313,10 +341,12 @@ public class LafBorders extends MetalBorders {
             }
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return borderInsets;
         }
 
+        @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             Insets tmpIns = getBorderInsets(c);
 
@@ -337,6 +367,7 @@ public class LafBorders extends MetalBorders {
 
         protected static Insets ins = new Insets(0, grosor, 5 + grosor, 5 + grosor);
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
             g.translate(x, y);
 
@@ -391,10 +422,12 @@ public class LafBorders extends MetalBorders {
             g.translate(-x, -y);
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return ins;
         }
 
+        @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             Insets tmpIns = getBorderInsets(c);
 
@@ -413,6 +446,7 @@ public class LafBorders extends MetalBorders {
 
         protected static Insets ins = new Insets(0, 2, 0, 10);
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             /*
              Icon icono = UIManager.getIcon( "BordeGenSup");
@@ -425,10 +459,12 @@ public class LafBorders extends MetalBorders {
             g.drawLine(0, height - 1, width, height - 1);
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return ins;
         }
 
+        @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             Insets tmpIns = getBorderInsets(c);
 
@@ -445,8 +481,9 @@ public class LafBorders extends MetalBorders {
 
         private static final long serialVersionUID = 116002347502172752L;
 
-        private static int bumpWidth = 14;
+        private static final int bumpWidth = 14;
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             Icon icon = null;
             int desp = 0;
@@ -470,10 +507,12 @@ public class LafBorders extends MetalBorders {
             }
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return getBorderInsets(c, new Insets(0, 0, 0, 0));
         }
 
+        @Override
         public Insets getBorderInsets(Component c, Insets ins) {
             ins.top = ins.left = ins.bottom = ins.right = 3;
 
@@ -508,12 +547,13 @@ public class LafBorders extends MetalBorders {
 
         protected static Insets ins = new Insets(3, 3, 2, 2);
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             int wl = width - 8;
             int hl = height - 8;
 
             ImageIcon icono = (ImageIcon) UIManager.getIcon("BordeGenSup");
-      // Esto esta aqui porque cuando se cambia de look and feel no siempre se cambia
+            // Esto esta aqui porque cuando se cambia de look and feel no siempre se cambia
             // el borde de los textfield, siguen teniendo el Lafborder y cuando van a cargar
             // el icono salta una nullpointerexception porque no lo encuentra 
             if (icono == null) {
@@ -545,10 +585,12 @@ public class LafBorders extends MetalBorders {
             g.translate(-x, -y);
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return ins;
         }
 
+        @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             Insets tmpIns = getBorderInsets(c);
 
@@ -565,6 +607,7 @@ public class LafBorders extends MetalBorders {
 
         private static final long serialVersionUID = 116002377502172752L;
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
         }
     }
@@ -575,15 +618,18 @@ public class LafBorders extends MetalBorders {
 
         protected static Insets ins = new Insets(1, 1, 1, 1);
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             g.setColor(LafLookAndFeel.getControlDarkShadow());
             g.drawRect(x, y, width - 1, height - 1);
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return ins;
         }
 
+        @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             Insets tmpIns = getBorderInsets(c);
 
@@ -602,14 +648,17 @@ public class LafBorders extends MetalBorders {
 
         protected static Insets ins = new Insets(5, 6, 5, 6);
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             super.paintBorder(c, g, x + 2, y + 2, width - 4, height - 4);
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return ins;
         }
 
+        @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             Insets tmpIns = getBorderInsets(c);
 
@@ -628,6 +677,7 @@ public class LafBorders extends MetalBorders {
 
         protected static Insets ins = new Insets(3, 3, 3, 3);
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             JMenuItem b = (JMenuItem) c;
             ButtonModel model = b.getModel();
@@ -637,10 +687,12 @@ public class LafBorders extends MetalBorders {
             }
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return ins;
         }
 
+        @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             Insets tmpIns = getBorderInsets(c);
 
@@ -664,14 +716,17 @@ public class LafBorders extends MetalBorders {
 
         protected static Insets ins = new Insets(2, 2, 2, 2);
 
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             super.paintBorder(c, g, x + 2, y + 2, width - 4, height - 4);
         }
 
+        @Override
         public Insets getBorderInsets(Component c) {
             return ins;
         }
 
+        @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             Insets tmpIns = getBorderInsets(c);
 

@@ -1,19 +1,22 @@
 package pl.pkosmowski.laf.clear;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.JComponent;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicTableHeaderUI;
 
 public class LafTableHeaderUI extends BasicTableHeaderUI {
-
-    public LafTableHeaderUI() {
-    }
 
     public static ComponentUI createUI(JComponent c) {
         return new LafTableHeaderUI();
     }
 
+    public LafTableHeaderUI() {
+    }
+
+    @Override
     public void paint(Graphics g, JComponent c) {
         g.translate(3, 0);
 

@@ -1,32 +1,33 @@
 package pl.pkosmowski.laf.clear;
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.metal.*;
+import java.awt.Graphics;
+import javax.swing.JComponent;
+import javax.swing.JInternalFrame;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.metal.MetalInternalFrameUI;
 
 public class LafInternalFrameUI extends MetalInternalFrameUI {
-  LafInternalFrameTitlePane titlePane;
-  
-  
-  public LafInternalFrameUI( JInternalFrame arg0) {
-    super( arg0);
-  }
 
-  public static ComponentUI createUI( JComponent c) {
-    return new LafInternalFrameUI( (JInternalFrame)c);
-  }
+    public static ComponentUI createUI(JComponent c) {
+        return new LafInternalFrameUI((JInternalFrame) c);
+    }
+    LafInternalFrameTitlePane titlePane;
 
-  protected JComponent createNorthPane( JInternalFrame w) {
-    super.createNorthPane( w);
-    
-    titlePane = new LafInternalFrameTitlePane( w);
-    return titlePane;
-  }
+    public LafInternalFrameUI(JInternalFrame arg0) {
+        super(arg0);
+    }
 
-  public void update( Graphics g, JComponent c) {
-    paint( g, c);
-  }
-  
-  
+    @Override
+    protected JComponent createNorthPane(JInternalFrame w) {
+        super.createNorthPane(w);
+
+        titlePane = new LafInternalFrameTitlePane(w);
+        return titlePane;
+    }
+
+    @Override
+    public void update(Graphics g, JComponent c) {
+        paint(g, c);
+    }
+
 }

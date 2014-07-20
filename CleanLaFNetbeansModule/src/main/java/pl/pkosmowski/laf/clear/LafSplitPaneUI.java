@@ -7,12 +7,12 @@ import javax.swing.plaf.metal.MetalSplitPaneUI;
 
 public class LafSplitPaneUI extends MetalSplitPaneUI {
 
-  public static ComponentUI createUI( JComponent c) {
-	  return new LafSplitPaneUI();
-  }
+    public static ComponentUI createUI(JComponent c) {
+        return new LafSplitPaneUI();
+    }
 
-  public BasicSplitPaneDivider createDefaultDivider() {
-	  return new LafSplitPaneDivider( this);
-  }
+    @Override
+    public BasicSplitPaneDivider createDefaultDivider() {
+        return new LafSplitPaneDivider(this);
+    }
 }
-

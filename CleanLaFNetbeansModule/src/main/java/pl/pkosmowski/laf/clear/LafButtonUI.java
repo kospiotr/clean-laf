@@ -1,33 +1,43 @@
 package pl.pkosmowski.laf.clear;
 
-import java.awt.*;
-import java.awt.geom.*;
-import java.awt.event.*;
-
-import java.beans.*;
-
-import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.metal.*;
-import javax.swing.event.*;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.geom.RoundRectangle2D;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonModel;
+import javax.swing.JComponent;
+import javax.swing.JToolBar;
+import javax.swing.event.MouseInputAdapter;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.metal.MetalBorders;
+import javax.swing.plaf.metal.MetalButtonUI;
 
 public class LafButtonUI extends MetalButtonUI {
-
-    protected MiListener miml;
-  //static private LafButtonUI ui;
-
-    protected boolean oldOpaque;
 
     public static ComponentUI createUI(JComponent c) {
         return new LafButtonUI();
         /*if ( ui == null ) {
          ui = new LafButtonUI();
          }
-    
+        
          return ui;
          */
     }
 
+    protected MiListener miml;
+    //static private LafButtonUI ui;
+
+    protected boolean oldOpaque;
+
+    @Override
     public void installDefaults(AbstractButton button) {
         super.installDefaults(button);
 
@@ -42,6 +52,7 @@ public class LafButtonUI extends MetalButtonUI {
         button.setBorder(MetalBorders.getButtonBorder());
     }
 
+    @Override
     public void installListeners(AbstractButton b) {
         super.installListeners(b);
 
@@ -51,12 +62,14 @@ public class LafButtonUI extends MetalButtonUI {
         b.addFocusListener(miml);
     }
 
+    @Override
     protected void uninstallListeners(AbstractButton b) {
         b.removeMouseListener(miml);
         b.removePropertyChangeListener(miml);
         b.removeFocusListener(miml);
     }
 
+    @Override
     protected void paintButtonPressed(Graphics g, AbstractButton b) {
         if (!oldOpaque) {
             return;
@@ -72,8 +85,8 @@ public class LafButtonUI extends MetalButtonUI {
         }
     }
 
-    protected void paintFocus(Graphics g, AbstractButton b,
-            Rectangle viewRect, Rectangle textRect, Rectangle iconRect) {
+    @Override
+    protected void paintFocus(Graphics g, AbstractButton b, Rectangle viewRect, Rectangle textRect, Rectangle iconRect) {
         if (!b.isFocusPainted() || !oldOpaque) {
             return;
         }
@@ -84,6 +97,7 @@ public class LafButtonUI extends MetalButtonUI {
         LafUtils.paintFocus(g, 3, 3, b.getWidth() - 6, b.getHeight() - 6, 2, 2, LafLookAndFeel.getFocusColor());
     }
 
+    @Override
     public void update(Graphics g, JComponent c) {
         oldOpaque = c.isOpaque();
 
@@ -96,6 +110,7 @@ public class LafButtonUI extends MetalButtonUI {
         }
     }
 
+    @Override
     public void paint(Graphics g, JComponent c) {
         ButtonModel mod = ((AbstractButton) c).getModel();
 
@@ -160,10 +175,10 @@ public class LafButtonUI extends MetalButtonUI {
         return boton;
     }
 
-  /////////////////////////////////////
+    /////////////////////////////////////
     public class MiListener extends MouseInputAdapter implements PropertyChangeListener, FocusListener {
 
-        private AbstractButton papi;
+        private final AbstractButton papi;
 
         MiListener(AbstractButton b) {
             papi = b;
@@ -176,36 +191,43 @@ public class LafButtonUI extends MetalButtonUI {
             }
         }
 
+        @Override
         public void mouseEntered(MouseEvent e) {
             papi.getModel().setRollover(true);
             refresh();
         }
 
+        @Override
         public void mouseExited(MouseEvent e) {
             papi.getModel().setRollover(false);
             refresh();
         }
 
+        @Override
         public void mousePressed(MouseEvent e) {
             papi.getModel().setRollover(false);
             refresh();
         }
 
+        @Override
         public void mouseReleased(MouseEvent e) {
             papi.getModel().setRollover(false);
             refresh();
         }
 
+        @Override
         public void propertyChange(PropertyChangeEvent evt) {
             if (evt.getPropertyName().equals("enabled")) {
                 refresh();
             }
         }
 
+        @Override
         public void focusGained(FocusEvent e) {
             refresh();
         }
 
+        @Override
         public void focusLost(FocusEvent e) {
             refresh();
         }

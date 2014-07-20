@@ -1,40 +1,41 @@
 package pl.pkosmowski.laf.clear;
 
-import java.awt.*;
-
-import javax.swing.*;
+import java.awt.Graphics;
+import javax.swing.JComponent;
+import javax.swing.JToolTip;
 import javax.swing.border.Border;
-import javax.swing.plaf.*;
-import javax.swing.plaf.metal.*;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.metal.MetalToolTipUI;
 
 public class LafToolTipUI extends MetalToolTipUI {
-  protected JToolTip tooltip;
-  
-  public LafToolTipUI( JComponent c) {
-    super();
-    
-    tooltip = (JToolTip)c;
-    tooltip.setOpaque( false);
-  }
-  
-  public static ComponentUI createUI( JComponent c) {
-    return new LafToolTipUI( c);
-  }
-  
-  public void paint( Graphics g, JComponent c) {
-    int w = tooltip.getWidth();
-    int h = tooltip.getHeight();
-    
-    Border bb = tooltip.getBorder();
-    if ( bb != null ) {
-      w -= bb.getBorderInsets( tooltip).right;
-      h -= bb.getBorderInsets( tooltip).bottom;
+
+    public static ComponentUI createUI(JComponent c) {
+        return new LafToolTipUI(c);
     }
-    
-    g.setColor( tooltip.getBackground());
-    g.fillRect( 0,0, w,h);
+    protected JToolTip tooltip;
 
-    super.paint( g, c);
-  }
+    public LafToolTipUI(JComponent c) {
+        super();
+
+        tooltip = (JToolTip) c;
+        tooltip.setOpaque(false);
+    }
+
+    @Override
+    public void paint(Graphics g, JComponent c) {
+        int w = tooltip.getWidth();
+        int h = tooltip.getHeight();
+
+        Border bb = tooltip.getBorder();
+        if (bb != null) {
+            w -= bb.getBorderInsets(tooltip).right;
+            h -= bb.getBorderInsets(tooltip).bottom;
+        }
+
+        g.setColor(tooltip.getBackground());
+        g.fillRect(0, 0, w, h);
+
+        super.paint(g, c);
+    }
+
 }
-
